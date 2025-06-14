@@ -1,0 +1,129 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url(./Roboto-Regular.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+    font-weight: 400;
+}
+
+button {
+    cursor: pointer;
+}
+
+.container {
+    margin: 0 auto;
+    width: 390px;
+    height: 845px;
+    border: 1px solid saddlebrown;
+}
+
+.wrap {
+    margin-top: 50px;
+    height: 680px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.wrap-category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.all-categorys {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 355px;
+    row-gap: 15px;
+    justify-content: space-between;
+}
+
+.category {
+    background-color: #D9D9D9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 7px;
+    width: 170px;
+    height: 100px;
+    padding: 15px;
+}
+
+.category h2 {
+    font-size: 18px;
+}
+
+.category-buttons {
+    margin-top: 15px;
+    display: flex;
+}
+
+
+
+/* input */
+
+.plus,
+.minus {
+    width: 20px;
+
+    border: none;
+    background-color: rgba(100, 100, 1, 0);
+    font-size: 15px;
+}
+
+input[type="text"] {
+
+    background: transparent;
+    text-align: center;
+    font-size: 22px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.money-input {
+    width: 100px;
+    align-items: center;
+    border: none;
+    background-color: rgba(100, 100, 1, 0);
+    padding: 2px;
+}
+
+
+
+
+/* add */
+
+
+.input-budget {
+    width: 150px;
+    height: 40px;
+    border: 1px solid #000;
+    border-radius: 3px;
+}
+
+#add-category {
+    width: 180px;
+    height: 40px;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+
+/* edit */
+
+#edit {
+    position: absolute;
+    top: 56px;
+    right: 20px;
+}
