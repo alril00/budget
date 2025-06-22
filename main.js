@@ -10,7 +10,6 @@ function getBudgetValue() {
 
 function updateBudget(newVal) {
     budgetInput.value = newVal;
-    // budgetInput.value = newVal.toString().replace(/^0+/, '');
 }
 
 budgetPlus.addEventListener('click', () => {
@@ -26,11 +25,10 @@ budgetMinus.addEventListener('click', () => {
 })
 
 
-document.querySelectorAll('.category').forEach(category => {
-    const minus = category.querySelector('.minus')
-    const plus = category.querySelector('.plus')
-    let moneyInput = category.querySelector('.money-input')
-
+function initializeCategory(category) {
+    const minus = category.querySelector('.minus');
+    const plus = category.querySelector('.plus');
+    let moneyInput = category.querySelector('.money-input');
 
     function getCurrNumberMoney() {
         let val1 = Number(moneyInput.value);
@@ -38,9 +36,11 @@ document.querySelectorAll('.category').forEach(category => {
         return val1;
     }
 
+
     function updateValueMoney(newVal) {
         moneyInput.value = newVal;
     }
+
 
     plus.addEventListener('click', () => {
         let currentValue = getCurrNumberMoney();
@@ -62,7 +62,6 @@ document.querySelectorAll('.category').forEach(category => {
         budgetInput.value = budgetValue;
 
     })
-
 
     let isChanged = false; //flag
 
@@ -100,7 +99,70 @@ document.querySelectorAll('.category').forEach(category => {
 
     })
 
+}
 
 
+// button add category
+
+
+document.querySelectorAll('.category').forEach(category => {
+    initializeCategory(category);
 })
+
+
+const addCategory = document.getElementById('add-category')
+const allCategory = document.querySelector('.all-categorys');
+
+let categoryNameInput = document.getElementById('category-name')
+const modal = document.getElementById('modal')
+
+
+
+//// modal
+
+
+addCategory.addEventListener('click', () => {
+    modal.style.display = 'block'; 
+});
+
+
+document.getElementById('cancel-category').addEventListener('click', () => {
+    modal.style.display = 'none';
+    categoryNameInput.value = '';
+})
+
+
+
+///// confirm
+
+
+document.getElementById('confirm-category').addEventListener('click', () => {
+
+    const categoryName = categoryNameInput.value.trim();
+
+
+    if (categoryName !== '') {
+        const newCategory = document.createElement('div');
+        newCategory.classList.add('category');
+
+        
+        newCategory.innerHTML = `
+                        <h2>${categoryName}</h2>
+                        <div class="category-buttons">
+                            <button class="minus">-</button>
+                            <input type="text" value="0" class="money-input">
+                            <button class="plus">+</button>
+                        </div>`;
+
+        allCategory.appendChild(newCategory);
+        initializeCategory(newCategory);
+        modal.style.display = 'none';
+        categoryNameInput.value = '';
+
+    } else {
+        alert('введите категорию');
+        // modal.after( 'not')
+    }
+})
+
 

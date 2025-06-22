@@ -20,7 +20,7 @@
                 <div class="all-categorys">
 
                     <div class="category">
-                        <h2>квартплата</h2>
+                        <h2 id="name-category">квартплата</h2>
                         <div class="category-buttons">
                             <button class="minus">-</button>
                             <input type="text" value="0" class="money-input">
@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="category">
-                        <h2>продукты</h2>
+                        <h2 id="name-category">продукты</h2>
                         <div class="category-buttons">
                             <button class="minus">-</button>
                             <input type="text" value="0" class="money-input">
@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="category">
-                        <h2>развлечения</h2>
+                        <h2 id="name-category">развлечения</h2>
                         <div class="category-buttons">
                             <button class="minus">-</button>
                             <input type="text" value="0" class="money-input">
@@ -57,6 +57,17 @@
                 <button class="plus">+</button>
             </div>
             <!-- <input type="reset" for="input"> -->
+
+            <div id="modal">
+                <h3>введите название категории</h3>
+                <input type="text" id="category-name">
+
+                <div>
+                    <button id="cancel-category">отмена</button>
+                    <button id="confirm-category">создать</button>
+                </div>
+
+            </div>
 
         </div>
 
