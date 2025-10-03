@@ -18,17 +18,17 @@ button {
 .container {
     margin: 0 auto;
     width: 390px;
-    height: 845px;
+    height: 740px;
     border: 1px solid saddlebrown;
 }
 
 .wrap {
     margin-top: 50px;
-    height: 680px;
+    height: 640px;
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     position: relative;
 }
 
@@ -56,6 +56,7 @@ button {
     width: 170px;
     height: 100px;
     padding: 15px;
+    position: relative;
 }
 
 .category h2 {
@@ -143,7 +144,7 @@ input:focus {
 
 }
 
-#modal h3{
+#modal h3 {
     margin-bottom: 10px;
 }
 
@@ -154,11 +155,137 @@ input:focus {
     justify-content: space-between;
 }
 
-#modal::after{
+#modal::after {
     /* content: 'введите категорию'; */
     background-color: #ffd86e;
     position: absolute;
     top: 59%;
     left: 7%;
     padding: 6px 10px;
+}
+
+
+
+/* animation */
+
+
+@keyframes wiggle {
+    5% {
+        transform: rotate(5deg);
+    }
+
+    10% {
+        transform: rotate(0deg);
+    }
+
+    15% {
+        transform: rotate(-5deg);
+    }
+
+    20% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(5deg);
+    }
+
+    30% {
+        transform: rotate(0deg);
+    }
+
+    35% {
+        transform: rotate(5deg);
+    }
+
+    40% {
+        transform: rotate(0deg);
+    }
+
+    45% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    55% {
+        transform: rotate(5deg);
+    }
+
+    60% {
+        transform: rotate(0deg);
+    }
+
+    65% {
+        transform: rotate(-5deg);
+    }
+
+    70% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(5deg);
+    }
+
+    80% {
+        transform: rotate(0deg);
+    }
+
+    85% {
+        transform: rotate(-5deg);
+    }
+
+    90% {
+        transform: rotate(0deg);
+    }
+
+    95% {
+        transform: rotate(5deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+
+    /* 105% {transform: rotate(5deg);} */
+}
+
+
+.select-to-delete {
+    display: none;
+    position: absolute;
+    top: 15%;
+    z-index: 10;
+}
+
+.selected {
+    border: 2px solid #ff0000;
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+.delete-button {
+    display: none;
+    position: absolute;
+    top: 140px;
+    z-index: 10;
+}
+
+.my-budget {
+    position: fixed;
+    bottom: 80px;
+}
+
+.wrap h1 {
+    padding-bottom: 110px;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
 }
