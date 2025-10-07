@@ -2,6 +2,17 @@ let budgetInput = document.querySelector('.input-budget')
 const budgetPlus = document.querySelector('.my-budget .plus')
 const budgetMinus = document.querySelector('.my-budget .minus')
 
+const addCategory = document.getElementById('add-category')
+const allCategory = document.querySelector('.all-categorys');
+
+const categoryNameInput = document.getElementById('category-name')
+const modalCategory = document.getElementById('modal')
+
+const editBtn = document.getElementById('edit');
+const selectToDelete = document.querySelector('.select-to-delete')
+const deleteButtonEdit = document.querySelector('.delete-button');
+
+
 
 function getBudgetValue() {
     let val = Number(budgetInput.value);
@@ -131,11 +142,6 @@ document.querySelectorAll('.category').forEach(category => {
 })
 
 
-const addCategory = document.getElementById('add-category')
-const allCategory = document.querySelector('.all-categorys');
-
-let categoryNameInput = document.getElementById('category-name')
-const modalCategory = document.getElementById('modal')
 
 
 
@@ -150,6 +156,7 @@ addCategory.addEventListener('click', () => {
 document.getElementById('cancel-category').addEventListener('click', () => {
     modalCategory.style.display = 'none';
     categoryNameInput.value = '';
+    document.querySelector('.category-name-hint').classList.remove('show')
 
 });
 
@@ -174,8 +181,6 @@ function createNewCategory() {
     const categoryName = categoryNameInput.value.trim();
 
     if (categoryName !== '') {
-
-
         const newCategory = document.createElement('div');
         newCategory.classList.add('category');
 
@@ -193,10 +198,15 @@ function createNewCategory() {
         modalCategory.style.display = 'none';
         categoryNameInput.value = '';
 
-    } else {
-        alert('введите категорию');
+        if (document.querySelectorAll('.category').length >= 8) {
+            allCategory.style.height = '500px'
+        }
+    }
+    else {
+        document.querySelector('.category-name-hint').classList.add('show')
     }
 }
+
 
 
 
@@ -204,66 +214,38 @@ function createNewCategory() {
 // edit //////////////
 
 
-const editBtn = document.getElementById('edit');
-const selectToDelete = document.querySelector('.select-to-delete')
-const deleteButtonEdit = document.querySelector('.delete-button');
-
-
-
-// edit.addEventListener('click', () => {
-
-//     selectToDelete.style.display = selectToDelete.style.display === 'block' ? 'none' : 'block';
-
-//     // deleteButtonEdit.style.display = selectToDelete.style.display === 'block' ? 'none' : 'block';
-
-
-//     // document.querySelectorAll('.category').forEach(category => {
-//     //     category.style.animation = 'wiggle 1.3s infinite'
-//     // })
-
-//     allCategory.addEventListener('click', (e) => {
-//         const clickedItem = e.target.closest('.category');
-//         if(clickedItem){
-//             document.querySelectorAll('.category.selected').forEach(category => {
-//                 if(category !== clickedItem) category.classList.remove('selected');
-//             });
-
-//             clickedItem.classList.toggle('selected');
-//             updateDeleteButtonEdit();
-//         }
-//     })
-
-//     function updateDeleteButtonEdit() {
-//         deleteButtonEdit.style.display = document.querySelectorAll('.category.selected').length > 0 ? 'block' : 'none';
-//     }
-
-// })
-
-
 function edit(e) {
+    const selectedItems = document.querySelectorAll('.category.selected')
+
+
     const target = e.target;
+
+    if (target.closest('.category-buttons')) {
+        return
+    }
 
     if (target) {
         selectToDelete.classList.toggle('show');
-
-        const selectedItems = document.querySelectorAll('.category.selected')
-        
+        allCategory.addEventListener('click', (e) => {
+            const clickedItem = e.target.closest('.category');
+            if (clickedItem) {
+                clickedItem.classList.toggle('selected');
+            }
+        })
         if (selectedItems.length > 0) {
             selectedItems.forEach(item => {
                 item.classList.remove('selected')
             })
-        } else {
-            allCategory.addEventListener('click', (e) => {
-                const clickedItem = e.target.closest('.category');
-                if (clickedItem) {
-                    clickedItem.classList.toggle('selected');
-                }
-            })
+
         }
 
 
     }
-
 };
 
 editBtn.addEventListener('click', edit)
+
+
+if (document.querySelectorAll('.category').length >= 8) {
+    allCategory.style.height = 500 + 'px'
+}
