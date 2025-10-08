@@ -217,12 +217,7 @@ function createNewCategory() {
 function edit(e) {
     const selectedItems = document.querySelectorAll('.category.selected')
 
-
     const target = e.target;
-
-    if (target.closest('.category-buttons')) {
-        return
-    }
 
     if (target) {
         selectToDelete.classList.toggle('show');
@@ -232,6 +227,11 @@ function edit(e) {
                 clickedItem.classList.toggle('selected');
             }
         })
+
+
+        deleteButtonEdit.classList.toggle('show')
+        deleteButtonEdit.addEventListener('click', trash)
+
         if (selectedItems.length > 0) {
             selectedItems.forEach(item => {
                 item.classList.remove('selected')
@@ -248,4 +248,13 @@ editBtn.addEventListener('click', edit)
 
 if (document.querySelectorAll('.category').length >= 8) {
     allCategory.style.height = 500 + 'px'
+}
+
+function trash(e) {
+    const trashTarget = e.target;
+
+    if (trashTarget) {
+        alert('a u sure about it?')
+    }
+
 }

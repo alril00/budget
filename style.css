@@ -50,7 +50,8 @@ button {
 }
 
 .all-categorys::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+    display: none;
+    /* Chrome, Safari, Opera */
 }
 
 
@@ -286,10 +287,17 @@ input:focus {
 }
 
 .delete-button {
-    display: none;
+    background-image: url('../img/icons8-trash (2).svg');
+    /* background-color: #ff0000; */
+    height: 46px;
+    width: 46px;
     position: absolute;
-    top: 140px;
+    top: 50px;
+    left: 10px;
     z-index: 10;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    display: none;
 }
 
 .my-budget {
