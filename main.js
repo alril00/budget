@@ -12,6 +12,7 @@ const editBtn = document.getElementById('edit');
 const selectToDelete = document.querySelector('.select-to-delete')
 const deleteButtonEdit = document.querySelector('.delete-button');
 
+const selectedItems = document.querySelectorAll('.category.selected');
 
 
 function getBudgetValue() {
@@ -205,7 +206,7 @@ function createNewCategory() {
     else {
         document.querySelector('.category-name-hint').classList.add('show')
     }
-}
+};
 
 
 
@@ -213,48 +214,56 @@ function createNewCategory() {
 
 // edit //////////////
 
+let isEditMode = false;
 
-function edit(e) {
-    const selectedItems = document.querySelectorAll('.category.selected')
+function toggleEditMode() {
+    isEditMode = !isEditMode;
 
-    const target = e.target;
-
-    if (target) {
-        selectToDelete.classList.toggle('show');
-        allCategory.addEventListener('click', (e) => {
-            const clickedItem = e.target.closest('.category');
-            if (clickedItem) {
-                clickedItem.classList.toggle('selected');
-            }
-        })
-
-
-        deleteButtonEdit.classList.toggle('show')
-        deleteButtonEdit.addEventListener('click', trash)
-
-        if (selectedItems.length > 0) {
-            selectedItems.forEach(item => {
-                item.classList.remove('selected')
-            })
-
-        }
-
-
+    if (isEditMode) {
+        editBtn.classList.add('active'); // например, выделение
+    } else {
+        editBtn.classList.remove('active');
+        // Также при выходе из режима можно сбросить все выделения
+        document.querySelectorAll('.category.selected').forEach(item => {
+            item.classList.remove('selected');
+        });
     }
-};
 
-editBtn.addEventListener('click', edit)
+}
 
+allCategory.addEventListener('click', (e) => {
+    const clickedItem = e.target.closest('.category');
+    if (clickedItem) {
+        clickedItem.classList.toggle('selected');
+    }
+});
+
+
+function edit() {
+    selectToDelete.classList.toggle('show');
+    deleteButtonEdit.classList.toggle('show');
+
+    // Очистить все выделения при входе в режим редактирования
+    document.querySelectorAll('.category.selected').forEach(item => {
+        item.classList.remove('selected');
+    });
+}
+
+
+editBtn.addEventListener('click', edit);
+
+function trash() {
+
+    const currentSelectedItems = document.querySelectorAll('.category.selected');
+
+    currentSelectedItems.forEach(item => {
+        item.remove();
+    });
+}
+
+deleteButtonEdit.addEventListener('click', trash);
 
 if (document.querySelectorAll('.category').length >= 8) {
-    allCategory.style.height = 500 + 'px'
+    allCategory.style.height = '500px';
 }
 
-function trash(e) {
-    const trashTarget = e.target;
-
-    if (trashTarget) {
-        alert('a u sure about it?')
-    }
-
-}

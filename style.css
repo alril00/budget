@@ -38,18 +38,32 @@ button {
     align-items: center;
 }
 
+.wrap-all-category {
+    display: flex;
+    /* height: 500px; */
+    overflow-y: auto;
+    height: 500px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    /* align-content: flex-start; */
+}
+
 .all-categorys {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     width: 355px;
-    row-gap: 15px;
+    /* row-gap: 15px; */
     justify-content: space-between;
-    /* height: 500px; */
-    overflow-y: auto;
+    align-content: flex-start;
+    /* overflow-y: auto; */
 }
 
 .all-categorys::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
+}
+.wrap-all-category::-webkit-scrollbar {
     display: none;
     /* Chrome, Safari, Opera */
 }
@@ -75,6 +89,7 @@ button {
     height: 100px;
     padding: 15px;
     position: relative;
+    margin-bottom: 15px;
 }
 
 .category h2 {
