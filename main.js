@@ -219,27 +219,25 @@ let isEditMode = false;
 function toggleEditMode() {
     isEditMode = !isEditMode;
 
-    if (isEditMode) {
-        editBtn.classList.add('active'); // например, выделение
-    } else {
-        editBtn.classList.remove('active');
-        // Также при выходе из режима можно сбросить все выделения
-        document.querySelectorAll('.category.selected').forEach(item => {
-            item.classList.remove('selected');
-        });
-    }
+    // if (isEditMode) {
+    //     document.querySelectorAll('.category.selected').forEach(item => {
+    //         item.classList.remove('selected');
+    //     });
+    // }
 
 }
 
 allCategory.addEventListener('click', (e) => {
     const clickedItem = e.target.closest('.category');
-    if (clickedItem) {
+    if (clickedItem && isEditMode) {
         clickedItem.classList.toggle('selected');
     }
 });
 
 
 function edit() {
+    toggleEditMode();
+    
     selectToDelete.classList.toggle('show');
     deleteButtonEdit.classList.toggle('show');
 
@@ -253,9 +251,9 @@ function edit() {
 editBtn.addEventListener('click', edit);
 
 function trash() {
-
     const currentSelectedItems = document.querySelectorAll('.category.selected');
 
+    
     currentSelectedItems.forEach(item => {
         item.remove();
     });
@@ -263,7 +261,7 @@ function trash() {
 
 deleteButtonEdit.addEventListener('click', trash);
 
-if (document.querySelectorAll('.category').length >= 8) {
-    allCategory.style.height = '500px';
-}
+// if (document.querySelectorAll('.category').length >= 8) {
+//     allCategory.style.height = '500px';
+// }
 
